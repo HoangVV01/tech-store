@@ -1,30 +1,29 @@
 package com.example.techstore.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document("categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoryId;
-    private String categoryName;
-    public Category() {
+    private String id;
 
+    private String categoryName;
+
+    public Category() {
     }
-    public Category(int categoryId, String categoryName) {
-        this.categoryId = categoryId;
+
+    public Category(String id, String categoryName) {
+        this.id = id;
         this.categoryName = categoryName;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public String getId() {
+        return id;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCategoryName() {

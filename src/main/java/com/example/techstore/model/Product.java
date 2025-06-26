@@ -1,17 +1,16 @@
 package com.example.techstore.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "products")
+@Document("products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
+
     private String name;
-    @Column(columnDefinition = "TEXT")
     private String description;
     private int unitsInStock;
     private double price;
@@ -21,7 +20,11 @@ public class Product {
     private String brand;
     private Date createdAt;
     private String imageFile;
-    public Product(int id, String name, String description, int unitsInStock, double price, int categoryId, double rating, double discount, String brand, Date createdAt, String imageFile) {
+
+    public Product() {
+    }
+
+    public Product(String id, String name, String description, int unitsInStock, double price, int categoryId, double rating, double discount, String brand, Date createdAt, String imageFile) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -35,15 +38,11 @@ public class Product {
         this.imageFile = imageFile;
     }
 
-    public Product() {
-
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
