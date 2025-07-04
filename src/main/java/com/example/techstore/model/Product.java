@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +16,12 @@ public class Product {
     private int unitsInStock;
     private double price;
     private int categoryId;
-    private double rating;
+    private int rating;
     private double discount;
     private String brand;
     private Date createdAt;
     private String imageFile;
-    public Product(int id, String name, String description, int unitsInStock, double price, int categoryId, double rating, double discount, String brand, Date createdAt, String imageFile) {
+    public Product(int id, String name, String description, int unitsInStock, double price, int categoryId, int rating, double discount, String brand, Date createdAt, String imageFile) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -87,11 +87,11 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
