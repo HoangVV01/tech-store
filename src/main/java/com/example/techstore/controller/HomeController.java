@@ -32,7 +32,8 @@ public class HomeController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "8") int size,
             Model model) {
-        Pageable pageable = PageRequest.of(page, size);
+        int safePage = Math.max(0, page); // Prevent negative page index
+        Pageable pageable = PageRequest.of(safePage, size);
         Page<Product> productPage;
 
         // If the search term is provided, use it to filter products
